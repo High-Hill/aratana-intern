@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>sample2</title>
+</head>
+<body>
+  <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+  <script>
+    //classをつくる
+    var Human = (function(){
+      //class名と同じ関数を宣言する（コンストラクタ）
+      function Human(data){
+        this.name = data.name;
+        this.height = data.height;
+        this.weight = data.weight;
+        //this で宣言してることになる(thisの中にvarがある)
+        console.log(data);
+      }
+      // return で値を返す
+      return Human;
+    })();
+    //JSON形式のデータ。mongoDB
+    var takamiData = {
+      "name": "takami",
+      "height": 173,
+      "weight": 52
+    };
+    //var = バリアブル
+    //インスタンスをつくる
+    var takami = new Human(takamiData);
+    //var morita = new Human("morita",165,55);
+    console.log(takamiData);
+    //console.log(morita);
+
+  </script>
+</body>
+</html>
