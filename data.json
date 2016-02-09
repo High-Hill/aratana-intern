@@ -1,0 +1,27 @@
+[
+{
+  "year": "2010",
+  "money" : 500,
+  "number" : 20
+},
+{
+  "year": "2011",
+  "money" : 700,
+  "number" : 25
+},
+{
+  "year": "2012",
+  "money" : 600,
+  "number" : 30
+},
+{
+  "year": "2013",
+  "money" : 550,
+  "number" : 20
+},
+{
+  "year": "2014",
+  "money" : 600,
+  "number" : 20
+}
+]
