@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>sample</title>
+  <style>
+    #graph rect {
+      fill: #0000ff;
+      stroke: #ff0000;
+      stroke-width: 5px;
+      /*stroke = 図形の周りの線*/
+    }
+    #graph rect:hover{
+      fill:#ff0000;
+    }
+    .axis text{
+      font-family: sans-serif;
+      font-size:  10px;
+    }
+    .axis path, .axis line{
+      fill:none;
+      stroke:#000000;
+    }
+  </style>
+</head>
+<body>
+  <svg id="graph"></svg>
+  <button id="trade">データ入れ替え</button>
+  <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+  <script>
+    var dataSet = [200,150,100,250];
+    var xScale = d3.scale.linear().domain([0,250]).range([0,250]);
+
+    d3.select("#graph").selectAll("rect")
+    .data(dataSet).enter().append("rect")
+    .attr("x",0).attr("y",function(d, i){ return i * 25 })
+    .attr("width",function(d, i){return d + "px"}).attr("height","20px");
+
+    d3.select("#graph").append("g").attr("class","axis")
+    .attr("transform","translate(10,"+ ((1 + dataSet.length) * 20 + 5) + ")")
+    .call(d3.svg.axis().scale(xScale).orient("bottom"));
+    //d=data d3の決まり
+
+    d3.select("#trade").on("click", function(){
+      var dataSet = [100,200,300,50];
+
+      d3.select("#graph").selectAll("rect")
+      .data(dataSet)
+      .transition()
+      .attr("width",function(d, i){ return d + "px"});
+    });
+  </script>
+</body>
+</html>
